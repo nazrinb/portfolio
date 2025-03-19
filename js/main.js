@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-	// Select the form inside the container with id "fh5co-consult"
+	// Select the form within the container with id "fh5co-consult"
 	var form = document.querySelector('#fh5co-consult form');
 	if (!form) {
 	  console.error("Contact form not found!");
@@ -192,19 +192,24 @@ document.addEventListener('DOMContentLoaded', function() {
 		return;
 	  }
   
-	  // Log the form data (simulate sending it to a server)
-	  console.log("Form Data Submitted:");
-	  console.log("First Name:", fname);
-	  console.log("Last Name:", lname);
-	  console.log("Email:", email);
-	  console.log("Subject:", subject);
-	  console.log("Message:", message);
+	  // Set up the parameters for EmailJS
+	  var templateParams = {
+		fname: fname,
+		lname: lname,
+		email: email,
+		subject: subject,
+		message: message
+	  };
   
-	  // Display a confirmation message to the user
-	  alert("Thank you " + fname + "! Your message has been sent.");
-  
-	  // Reset the form fields
-	  form.reset();
+	  // Send email using EmailJS
+	  emailjs.send('service_9d5mf2s', 'YOUR_TEMPLATE_ID', templateParams)
+		.then(function(response) {
+		  alert("Thank you " + fname + "! Your message has been sent.");
+		  form.reset();
+		}, function(error) {
+		  alert("Failed to send message. Please try again later.");
+		  console.error("EmailJS error:", error);
+		});
 	});
   });
   
