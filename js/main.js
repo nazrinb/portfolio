@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const downloadButton = document.getElementById('downloadCV');
     
     downloadButton.addEventListener('click', function() {
-        const cvUrl = '/Users/nbayramli/Desktop/University stuff/extra-documents/Nazrin Bayramli Resume 2.0.pdf';
+        const cvUrl = '/Users/nbayramli/Desktop/University stuff/extra-documents/Nazrin Bayramli Resume.pdf';
 
         const link = document.createElement('a');
         link.href = cvUrl;
@@ -166,3 +166,45 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 	
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+	// Select the form inside the container with id "fh5co-consult"
+	var form = document.querySelector('#fh5co-consult form');
+	if (!form) {
+	  console.error("Contact form not found!");
+	  return;
+	}
+  
+	form.addEventListener('submit', function(e) {
+	  e.preventDefault(); // Prevent default form submission
+  
+	  // Retrieve values from the form fields
+	  var fname   = document.getElementById('fname').value.trim();
+	  var lname   = document.getElementById('lname').value.trim();
+	  var email   = document.getElementById('email').value.trim();
+	  var subject = document.getElementById('subject').value.trim();
+	  var message = document.getElementById('message').value.trim();
+  
+	  // Simple validation to ensure all fields are filled
+	  if (!fname || !lname || !email || !subject || !message) {
+		alert("Please fill in all fields.");
+		return;
+	  }
+  
+	  // Log the form data (simulate sending it to a server)
+	  console.log("Form Data Submitted:");
+	  console.log("First Name:", fname);
+	  console.log("Last Name:", lname);
+	  console.log("Email:", email);
+	  console.log("Subject:", subject);
+	  console.log("Message:", message);
+  
+	  // Display a confirmation message to the user
+	  alert("Thank you " + fname + "! Your message has been sent.");
+  
+	  // Reset the form fields
+	  form.reset();
+	});
+  });
+  
