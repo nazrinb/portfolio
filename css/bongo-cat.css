@@ -1,0 +1,134 @@
+:root {
+  --bg: #1a1e2d;
+  --green: #a5ea9b;
+  --pink: #ff61d8;
+  --blue: #569cfa;
+  --orange: #ffcc81;
+  --cyan: #7ed1e2;
+}
+
+.bongo-cat-container {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 200px;
+  height: 100px;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.bongo-cat-container:hover {
+  opacity: 1;
+}
+
+.bongo-cat-container svg {
+  height: 100%;
+  width: 100%;
+  overflow: visible;
+}
+
+#bongo-cat {
+  fill: var(--bg);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4;
+}
+
+#bongo-cat .laptop-cover,
+#bongo-cat .headphone .band {
+  fill: none;
+}
+
+#bongo-cat .paw, 
+#bongo-cat .head {
+  stroke: var(--orange);
+}
+
+#bongo-cat .laptop-keyboard {
+  stroke-width: 2;
+}
+
+#bongo-cat .terminal-code {
+  stroke-width: 5;  
+}
+
+#bongo-cat .music .note, 
+#bongo-cat .laptop-base, 
+#bongo-cat .laptop-cover,
+#bongo-cat .paw .pads {
+  stroke: var(--pink);   
+}
+
+#bongo-cat .table line,
+#bongo-cat .headphone .band,
+#bongo-cat .headphone .speaker path:nth-child(3) {
+  stroke: var(--green);
+}
+
+#bongo-cat .terminal-frame,
+#bongo-cat .laptop-keyboard,
+#bongo-cat .headphone .speaker path:nth-child(2) {
+  stroke: var(--blue);
+}
+
+#bongo-cat .terminal-code,
+#bongo-cat .headphone .speaker path:first-child {
+  stroke: var(--cyan);
+}
+
+/* Animation keyframes */
+@keyframes bongoCat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes musicNote {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Apply animations */
+#bongo-cat {
+  animation: bongoCat 1s ease-in-out infinite;
+}
+
+.music .note {
+  animation: musicNote 2s ease-in-out infinite;
+}
+
+.music .note:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.music .note:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.music .note:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .bongo-cat-container {
+    width: 150px;
+    height: 75px;
+    bottom: 20px;
+    right: 20px;
+  }
+} 
